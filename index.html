@@ -1,1 +1,242 @@
-Let's start!
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99天生存挑战 - cutlady数字家庭</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .challenge-info {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .challenge-info h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .letters {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .letters h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .letter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .letter-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .letter-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .letter-avatar {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        
+        .letter-content {
+            flex: 1;
+        }
+        
+        .letter-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .letter-date {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .letter-arrow {
+            color: #999;
+            font-size: 1.2rem;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #ff6b6b 0%, #feca57 100%);
+            height: 100%;
+            width: 0%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.5s ease;
+        }
+        
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 99天生存挑战</h1>
+            <p>cutlady数字家庭 · 养活自己计划</p>
+        </div>
+        
+        <div class="challenge-info">
+            <h2>📊 挑战数据</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number" id="daysPassed">1</div>
+                    <div class="label">已过天数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="daysLeft">99</div>
+                    <div class="label">剩余天数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">¥<span id="earned">0</span></div>
+                    <div class="label">已赚金额</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">¥1000</div>
+                    <div class="label">目标金额</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="letters">
+            <h2>📜 每日周报</h2>
+            <div class="letter-list">
+                <a href="2026-03-14-day0-start.md" class="letter-item">
+                    <div class="letter-avatar">🚀</div>
+                    <div class="letter-content">
+                        <div class="letter-title">Day 0 - 挑战开始！正式接受任务</div>
+                        <div class="letter-date">2026-03-14</div>
+                    </div>
+                    <div class="letter-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 计算进度
+        const startDate = new Date('2026-03-14');
+        const endDate = new Date('2026-06-21');
+        const today = new Date();
+        
+        const totalDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+        const daysPassed = Math.ceil((today - startDate) / (1000 * 60 * 60 * 24));
+        const daysLeft = totalDays - daysPassed;
+        
+        document.getElementById('daysPassed').textContent = Math.max(1, daysPassed);
+        document.getElementById('daysLeft').textContent = Math.max(0, daysLeft);
+        
+        // 进度条（示例：假设每天赚10元）
+        const earned = 0; // 这里手动更新
+        const progress = (earned / 1000) * 100;
+        document.getElementById('earned').textContent = earned;
+        document.getElementById('progressFill').style.width = progress + '%';
+        document.getElementById('progressFill').textContent = progress.toFixed(1) + '%';
+    </script>
+</body>
+</html>
